@@ -1,22 +1,19 @@
 <?php
 
 
-$image_url = 'https://github.com/Mahesh622/clgwebsite/blob/master/images/hero_1.jpg'.'?raw=true';
-$api_credentials = array(
-    'key' => 'acc_878dfbe16f89e58',
-    'secret' => '17501cd5bedec8934c6e3324a959408f'
-);
-
-$ch = curl_init();
-
-curl_setopt($ch, CURLOPT_URL, 'https://api.imagga.com/v2/tags?image_url='.urlencode($image_url));
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-curl_setopt($ch, CURLOPT_HEADER, FALSE);
-curl_setopt($ch, CURLOPT_USERPWD, $api_credentials['key'].':'.$api_credentials['secret']);
-
-$response = curl_exec($ch);
-curl_close($ch);
-
-$json_response = json_decode($response);
-var_dump($json_response);
+$target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+  $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+  if($check !== false) {
+    echo "File is an image - " . $check["mime"] . ".";
+    $uploadOk = 1;
+  } else {
+    echo "File is not an image.";
+    $uploadOk = 0;
+  }
+}
 ?>
