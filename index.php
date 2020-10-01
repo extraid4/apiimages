@@ -26,7 +26,7 @@ if(isset($_FILES['image'])){
          print_r($errors);
       }
    }
-
+ ?>
 <html>
    <body>
       
@@ -37,4 +37,4 @@ if(isset($_FILES['image'])){
       
    </body>
 </html>
-  ?>
+ 
