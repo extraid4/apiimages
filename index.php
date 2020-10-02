@@ -1,8 +1,6 @@
 <?php
-$myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-$txt = "Mickey Mouse\n";
-fwrite($myfile, $txt);
-$txt = "Minnie Mouse\n";
-fwrite($myfile, $txt);
-fclose($myfile);
+$content = "some text here";
+$fp = fopen($_SERVER['DOCUMENT_ROOT'] . "/myText.txt","wb");
+fwrite($fp,$content);
+fclose($fp);
 ?>
